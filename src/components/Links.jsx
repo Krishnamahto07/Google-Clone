@@ -9,11 +9,11 @@ export const Links = () => {
         { url:"/latestnews" , text:"latestnews"},
     ]
   return (
-    <div className='flex justify-around gap-5'>
+    <div className='flex justify-around gap-5 font-semibold px-5 sm:px-8'>
         {
             links.map((link,index) =>{
                 return (
-                    <NavLink key={index} to={link.url}  >{link.text}</NavLink>
+                    <NavLink className="hover:underline " key={index} to={link.url}  >{link.text}</NavLink>
                 )
             })
         }

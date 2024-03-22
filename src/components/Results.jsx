@@ -44,20 +44,27 @@ export default function Results() {
       );
     case '/imagesearch':
       return (
+        
         <div className='flex flex-wrap justify-between space-y-6 sm:px-56 px-5 w-full'>
-          {
-            results?.map((result,index)=>{
-              return (
-                <div key={index} className='flex flex-col break-words w-[350px] gap-2'>
-                  
-                  <div className=''><img className='object-contain' rel='noreferrer' src={result.url} alt='img' loading='lazy' width="full" /></div>
-                  <a href={result.contextLink}>{result.contextLink}</a>
-                  <p className='text-md font-semibold'>{result.title}</p>
-                  <a href={result.source_url} className='hover:underline hover:text-blue-700 text-sm'>{result.source_url}</a>
-                </div>
-              )
-            })
-          }
+          { results ? 
+          <div className="w-full flex flex-wrap justify-between">
+                {
+                  results?.map((result,index)=>{
+                    return (
+                      <div key={index} className='flex flex-col break-words w-[350px] gap-2'>
+                        
+                        <div className=''><img className='object-contain' rel='noreferrer' src={result.url} alt='img' loading='lazy' width="full" /></div>
+                        <a href={result.contextLink}>{result.contextLink}</a>
+                        <p className='text-md font-semibold'>{result.title}</p>
+                        <a href={result.source_url} className='hover:underline hover:text-blue-700 text-sm'>{result.source_url}</a>
+                      </div>
+                    )
+                  })
+                }
+            </div> :
+
+          <h3 className="text-2xl font-semibold">First Search something</h3>
+          } 
         </div>
       );
     case '/news':
@@ -82,14 +89,14 @@ export default function Results() {
       );
     case '/latestnews':
           return (
-            <div>
+            <div className="flex flex-wrap justify-between space-y-6 sm:px-56">
               {
                 results?.articles?.map((result,index)=>{
                 return(
-                  <div key={index} className='flex flex-col gap-3 sd:px-56 px-9'>
+                  <div key={index} className='flex flex-col gap-3'>
                       <h3 className='text-xl font-bold'>{result.title}</h3>
-                      <a href={result.url} >{result.url}</a>
-                      <p>{result.published_date}</p>
+                      <a href={result.url} className="hover:underline" >{result.url}</a>
+                      <p className="font-semibold">{result.published_date}</p>
                   </div>
                 )
                 })

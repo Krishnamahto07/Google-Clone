@@ -18,7 +18,7 @@ export const ResultContextProvider = ({children}) => {
     // const [data , setData] = useState('');
     const [loading , setLoading] = useState(false);
     const [searchTerm , setSearchTerm] = useState('');
-    const [ans ,setAns] = useState({})
+    // const [ans ,setAns] = useState({})
 
     // const getResults = async (type) =>{
     //     setLoading(true);
@@ -165,7 +165,7 @@ export const ResultContextProvider = ({children}) => {
         }
       };
         async function getResults(param) {
-            console.log("path =",param);
+            // console.log("path =",param);
             setLoading(true);
             let op = {};
             if(param === '/search'){
@@ -179,7 +179,7 @@ export const ResultContextProvider = ({children}) => {
             
             try {
                 const response = await axios.request(op);
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setResults(response.data.data);
             } catch (error) {
                 console.error(error);
@@ -220,11 +220,11 @@ export const ResultContextProvider = ({children}) => {
           
           try {
               const response = await axios.request(options);
-              console.log(response.data);
+              // console.log(response.data);
               setResults(response.data);
           } catch (error) {
               console.error(error);
-              console.log("New fetch m error h");
+              // console.log("New fetch m error h");
           }
           setLoading(false)
     }
@@ -250,7 +250,7 @@ export const ResultContextProvider = ({children}) => {
                 try {
                     options.params.q = searchTerm;
                     const response = await axios.request(options);
-                    console.log(response.data);
+                    // console.log(response.data);
                     setResults(response.data);
                 } catch (error) {
                     console.error(error);
