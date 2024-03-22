@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes , Route , } from 'react-router-dom'
 import Results from './Results'
-import Home from './Home'
+import { Home } from './Home'
 // import Switch from './Switch'
 export const Router = () => {
   // const paths = ["/search", "/image", "/video", "/news"];
