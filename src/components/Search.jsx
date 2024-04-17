@@ -12,7 +12,7 @@ export const Search = () => {
     function clickHandler(){
         setSearchTerm(text)
         // console.log(text);
-        navigate("/");
+        navigate("/search");
     }
     
 
