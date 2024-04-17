@@ -3,14 +3,18 @@ import { useResultContext } from '../context/ResultContextProvider';
 import { useDebounce } from 'use-debounce';
 import { Links } from './Links';
 import { FaSearch } from "react-icons/fa";
+import {useNavigate} from "react-router-dom"
 export const Search = () => {
+    const navigate = useNavigate();
     const [text , setText] = useState('');
     const { setSearchTerm} = useResultContext();
     // const [debouncedValue] = useDebounce(text,300);
     function clickHandler(){
         setSearchTerm(text)
         // console.log(text);
+        navigate("/");
     }
+    
 
   return (
     <div>
