@@ -148,8 +148,8 @@ export const ResultContextProvider = ({children}) => {
           limit: '15'
         },
         headers: {
-          'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-          'X-RapidAPI-Host': 'real-time-web-search.p.rapidapi.com'
+          'X-RapidAPI-Key': process.env.REACT_APP_KEY1,
+          'X-RapidAPI-Host': process.env.REACT_APP_HOST1
         }
       };
     let options2 = {
@@ -160,8 +160,8 @@ export const ResultContextProvider = ({children}) => {
           region: 'us'
         },
         headers: {
-          'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-          'X-RapidAPI-Host': 'real-time-image-search.p.rapidapi.com'
+          'X-RapidAPI-Key': process.env.REACT_APP_KEY2,
+          'X-RapidAPI-Host': process.env.REACT_APP_HOST2
         }
       };
         async function getResults(param) {
@@ -213,8 +213,8 @@ export const ResultContextProvider = ({children}) => {
               category: 'sports'
             },
             headers: {
-              'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-              'X-RapidAPI-Host': 'news-api14.p.rapidapi.com'
+              'X-RapidAPI-Key': process.env.REACT_APP_KEY3,
+              'X-RapidAPI-Host': process.env.REACT_APP_HOST3
             }
           };
           
@@ -242,8 +242,8 @@ export const ResultContextProvider = ({children}) => {
                     publisher: 'cnn.com,bbc.com'
                     },
                     headers: {
-                    'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-                    'X-RapidAPI-Host': 'news-api14.p.rapidapi.com'
+                    'X-RapidAPI-Key': process.env.REACT_APP_KEY4,
+                    'X-RapidAPI-Host': process.env.REACT_APP_HOST4
                     }
                 };
                 

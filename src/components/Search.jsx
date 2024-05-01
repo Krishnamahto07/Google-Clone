@@ -1,6 +1,5 @@
 import React , {useEffect,useState} from 'react'
 import { useResultContext } from '../context/ResultContextProvider';
-import { useDebounce } from 'use-debounce';
 import { Links } from './Links';
 import { FaSearch } from "react-icons/fa";
 import {useNavigate} from "react-router-dom"

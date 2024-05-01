@@ -13,18 +13,9 @@ export const Router = () => {
           <Route path='/imagesearch' element={<Results/>} />
           <Route path='/news' element={<Results/>} />
           <Route path='/latestnews' element={<Results />} />
-        {/* {paths.map((path) => (
-          <Route key={path} path={path} element={<Results />} />
-        ))} */}
+        
       </Routes>
-      {/* <Routes>
-        <Route exact path='/'>
-          <Navigate to='/search'/>
-        </Route>
-        <Route exact path={['/search','/images','/video','/news']}>
-          <Results/>
-        </Route>
-      </Routes> */}
+      
     </div>
   )
 }

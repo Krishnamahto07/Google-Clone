@@ -13,10 +13,13 @@ export const Links = () => {
         {
             links.map((link,index) =>{
                 return (
-                    <NavLink className="hover:underline " key={index} to={link.url}  >{link.text}</NavLink>
+                    <NavLink className="hover:underline group" key={index} to={link.url}  >
+                        <div>{link.text}</div>
+                        </NavLink>
                 )
             })
         }
     </div>
+    
   )
 }

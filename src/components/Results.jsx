@@ -46,10 +46,11 @@ export default function Results() {
       return (
         
         <div className='flex flex-wrap justify-between space-y-6 sm:px-56 px-5 w-full'>
-          { results ? 
+          { results && 
           <div className="w-full flex flex-wrap justify-between">
                 {
-                  results?.map((result,index)=>{
+        
+                  results.map((result,index)=>{
                     return (
                       <div key={index} className='flex flex-col break-words w-[350px] gap-2'>
                         
@@ -61,9 +62,7 @@ export default function Results() {
                     )
                   })
                 }
-            </div> :
-
-          <h3 className="text-2xl font-semibold">First Search something</h3>
+            </div> 
           } 
         </div>
       );
