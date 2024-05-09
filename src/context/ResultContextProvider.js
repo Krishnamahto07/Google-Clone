@@ -1,211 +1,91 @@
 import React , {createContext , useContext , useState} from "react";
 import axios from 'axios';
 
-// create context
 
 const ResultContext = createContext();
-// const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1';
-// const baseUrl = "https://google-search74.p.rapidapi.com/?query=";
-// const baseUrl2 = "&limit=10&related_keywords=true";
-// const baseUrl = 'https://google-search-2.p.rapidapi.com/';
-// const url = 'videos?query=football&num=10&gl=us&hl=en_us&page=0&nfpr=0&device=desktop';
-// const url = 'https://google-search-2.p.rapidapi.com/query=football&num=10&gl=us&hl=en_us&page=0&nfpr=0&device=desktop';
-// const url = 'https://google-search-2.p.rapidapi.com/videos?query=football&num=10&gl=us&hl=en_us&page=0&nfpr=0&device=desktop';
 
 // create context provider
 export const ResultContextProvider = ({children}) => {
     let [results , setResults] = useState([]);
-    // const [data , setData] = useState('');
     const [loading , setLoading] = useState(false);
-    const [searchTerm , setSearchTerm] = useState('');
-    // const [ans ,setAns] = useState({})
+    const [searchTerm , setSearchTerm] = useState('');  
 
-    // const getResults = async (type) =>{
-    //     setLoading(true);
+    const options = {
+      method: 'GET',
+      url: process.env.REACT_APP_URL,
+      params: {
+        query: '',
+        limit: '10',
+        related_keywords: 'true'
+      },
+      headers: {
+        'X-RapidAPI-Key': process.env.REACT_APP_KEY1,
+        'X-RapidAPI-Host': process.env.REACT_APP_HOST1
+      }
+    };
 
-    //     const response = await fetch(`${baseUrl}${type}`, {
-    //         method:'GET',
-    //         headers:{
-    //             'x-user-agent':'desktop',
-    //             'x-rapidapi-host': 'google-search3.p.rapidapi.com',
-    //             'x-rapidapi-key': "bd6c052731msh6e9b939faced74ep1d45b7jsn3e8447d33070",
-    //         }
-    //     });
-
-    //     const data = await response.json();
-    //     console.log(data);
-    //     setResults(data);
-    //     setLoading(false);
-    // }
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-    //         'X-RapidAPI-Host': 'google-search74.p.rapidapi.com'
-    //     }
-    // };
-    // const getResults = async (serach_word) =>{
-    //     setLoading(true)
-    //     try {
-    //         const response = await fetch(baseUrl+serach_word+baseUrl2, options);
-    //         // const ans = await response.text();
-    //         const ans2 = await response.json();
-            
-    //         // setResults(ans2);
-    //         console.log("in Json = ",ans2);
-    //         await setData(ans2);
-    //         // console.log(ans);
-    //         // console.log("result = ",results);
-    //         console.log(data);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    //     // console.log(results);
-    //     setLoading(false)
-    // }
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-    //         'X-RapidAPI-Host': 'google-search-2.p.rapidapi.com'
-    //     }
-    // };
-    // const getResults = async() =>{
-    //     try {
-    //         const response = await fetch(url, options);
-    //         const result = await response.json();
-    //         setResults(result);
-    //         console.log("response = ",result);
-
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
-
-    // const getResults = async (url) => {
-    //     setLoading(true);
-    //     try{
-    //         const res = await fetch(baseUrl+url,{
-    //             method: 'GET',
-    //             headers: {
-    //             'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-    //             'X-RapidAPI-Host': 'google-search74.p.rapidapi.com'
-    //         }
-    //         });
-    //         const data2 = await res.json();
-            
-            
-    //         // console.log();
-    //         // setResults(data2.results[0]);
-    //         setData('search = ', data2.search_term);
-    //         console.log(data2);
-    //         // console.log("result = ",results);
-    //         console.log(data);
-    //         setLoading(false);
-    //     }catch(error){
-    //         console.log(error);
-    //     }   
-    //   };
-
-    // const options = {
-    //     method: 'GET',
-    //     url: 'https://google-search72.p.rapidapi.com',
-    //     params: {
-    //       q: 'India',
-    //       gl: 'us',
-    //       lr: 'lang_en',
-    //       num: '10',
-    //       start: '0'
-    //     },
-    //     headers: {
-    //       'X-RapidAPI-Key': '3b2be45b61msh0e30dc9598c6363p1d0092jsn605cc24df0a2',
-    //       'X-RapidAPI-Host': 'google-search72.p.rapidapi.com'
-    //     }
-    //   };
-      
-    // async function getResults(argu){
-    //     setLoading(true);
-    //     try {
-    //         // options.params.q = searchTerm;
-    //         options.url = options.url + argu;
-    //         console.log("url = ",options.url);
-    //         const response = await axios.request(options);
-    //         console.log("response .data. items = ",response.data);
-    //         setResults(response.data.items);
-    //     } catch (error) {
-    //         console.log("Error h Fetching m");
-    //         console.error(error);
-    //     }
-    //     setLoading(false);
-    // }  
-
-    let options = {
-        method: 'GET',
-        url: 'https://real-time-web-search.p.rapidapi.com/search',
-        params: {
-          q: 'create an online store',
-          limit: '15'
-        },
-        headers: {
-          'X-RapidAPI-Key': process.env.REACT_APP_KEY1,
-          'X-RapidAPI-Host': process.env.REACT_APP_HOST1
-        }
-      };
     let options2 = {
-        method: 'GET',
-        url: 'https://real-time-image-search.p.rapidapi.com/search',
-        params: {
-          query: 'beach',
-          region: 'us'
-        },
-        headers: {
-          'X-RapidAPI-Key': process.env.REACT_APP_KEY2,
-          'X-RapidAPI-Host': process.env.REACT_APP_HOST2
-        }
-      };
+      method: 'POST',
+      url: process.env.REACT_APP_URL2,
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': process.env.REACT_APP_KEY1,
+        'X-RapidAPI-Host': process.env.REACT_APP_HOST2
+      },
+      data: {
+        text: '',
+        safesearch: 'off',
+        region: 'wt-wt',
+        color: '',
+        size: '',
+        type_image: '',
+        layout: '',
+        max_results: 100
+      }
+    };
+
         async function getResults(param) {
-            // console.log("path =",param);
-            setLoading(true);
-            let op = {};
-            if(param === '/search'){
-            options.params.q = searchTerm;
+          console.log("calling for Getresults")
+          setLoading(true);
+          let op = {};
+
+          if(param === '/search'){
+            console.log("in Search");
+            options.params.query = searchTerm;
             op = options;
+
+            try {
+                  const response = await axios.request(op);
+                  console.log(response?.data?.results)
+                  setResults(response?.data?.results)
+
+            } catch (error) {
+                  console.error(error);
+
+            }
             }
             else {
-                options2.params.query = searchTerm;
+                options2.data.text = searchTerm;
                 op = options2;
-            }
-            
-            try {
-                const response = await axios.request(op);
-                // console.log(response.data.data);
-                setResults(response.data.data);
-            } catch (error) {
-                console.error(error);
+                console.log("Calling Search images");
+
+                try {
+                  const response = await axios.request(op);
+                  console.log(response?.data?.result);
+                  setResults(response?.data?.result);
+                } catch (error) {
+                  console.error(error);
+                }
             }
             setLoading(false)
     }
     
-    //   async function getResults2(param) {
-    //     console.log("path =",param);
-    //     setLoading(true);
-    //     options.params.q = searchTerm;
-        
-    //         try {
-    //             const response = await axios.request(options);
-    //             console.log(response.data);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     setLoading(false)
-    // }
 
     async function getLatestNews(){
         setLoading(true)
         const options = {
             method: 'GET',
-            url: 'https://news-api14.p.rapidapi.com/top-headlines',
+            url: process.env.REACT_APP_URL3,
             params: {
               country: 'us',
               language: 'en',
@@ -220,11 +100,11 @@ export const ResultContextProvider = ({children}) => {
           
           try {
               const response = await axios.request(options);
-              // console.log(response.data);
+              console.log("Calling LatesNews")
+              console.log(response.data);
               setResults(response.data);
           } catch (error) {
               console.error(error);
-              // console.log("New fetch m error h");
           }
           setLoading(false)
     }
@@ -233,7 +113,7 @@ export const ResultContextProvider = ({children}) => {
                 setLoading(true)
             const options = {
                     method: 'GET',
-                    url: 'https://news-api14.p.rapidapi.com/search',
+                    url: process.env.REACT_APP_URL4,
                     params: {
                     q: '',
                     country: 'us',
@@ -242,15 +122,16 @@ export const ResultContextProvider = ({children}) => {
                     publisher: 'cnn.com,bbc.com'
                     },
                     headers: {
-                    'X-RapidAPI-Key': process.env.REACT_APP_KEY4,
-                    'X-RapidAPI-Host': process.env.REACT_APP_HOST4
+                    'X-RapidAPI-Key': process.env.REACT_APP_KEY3,
+                    'X-RapidAPI-Host': process.env.REACT_APP_HOST3
                     }
                 };
                 
                 try {
                     options.params.q = searchTerm;
                     const response = await axios.request(options);
-                    // console.log(response.data);
+                    console.log("calling get News");
+                    console.log(response.data);
                     setResults(response.data);
                 } catch (error) {
                     console.error(error);

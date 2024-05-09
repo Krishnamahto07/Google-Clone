@@ -1,8 +1,7 @@
 import { TailSpin } from "react-loader-spinner";
 const Loading = () => {
     return (
-        <div>
-            <p>Loading</p>
+        <div className="w-full h-screen flex justify-center items-center">
             <TailSpin
             height="80"
             width="80"
@@ -12,7 +11,8 @@ const Loading = () => {
             wrapperStyle={{}}
             wrapperClass=""
             visible={true}
-        />
+            />
+            <p>Loading</p>
         </div>
     );
 };  

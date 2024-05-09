@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import ReactPlayer from 'react-player'
 import { useLocation } from 'react-router-dom'
 import { useResultContext } from '../context/ResultContextProvider'
 import Loading from './Loading'
@@ -46,23 +45,25 @@ export default function Results() {
       return (
         
         <div className='flex flex-wrap justify-between space-y-6 sm:px-56 px-5 w-full'>
-          { results && 
+          { results ?
           <div className="w-full flex flex-wrap justify-between">
                 {
         
                   results.map((result,index)=>{
+                    console.log(result)
                     return (
                       <div key={index} className='flex flex-col break-words w-[350px] gap-2'>
                         
-                        <div className=''><img className='object-contain' rel='noreferrer' src={result.url} alt='img' loading='lazy' width="full" /></div>
-                        <a href={result.contextLink}>{result.contextLink}</a>
+                        <div className=''><img className='object-contain' rel='noreferrer' src={result.image} alt='img' loading='lazy' width="full" /></div>
+                        <a href={result.thumbnail}>{result.thumbnail}</a>
                         <p className='text-md font-semibold'>{result.title}</p>
-                        <a href={result.source_url} className='hover:underline hover:text-blue-700 text-sm'>{result.source_url}</a>
+                        <a href={result.url} className='hover:underline hover:text-blue-700 text-sm'>{result.url}</a>
                       </div>
                     )
                   })
                 }
-            </div> 
+            </div> :
+            <div>DATA NOT FOUND </div>
           } 
         </div>
       );
